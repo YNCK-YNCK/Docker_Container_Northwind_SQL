@@ -29,7 +29,8 @@ Ideal für Übungen zu `SELECT`, `JOIN`, `GROUP BY`, `ORDER BY`, `WHERE`, Aggreg
 ## Voraussetzungen
 
 1. **Docker Desktop** (Windows/macOS)
-2. **Optional**: Ein SQL-Client deiner Wahl, z. B.
+2. **WSL Subsystem**
+3. **Optional**: Ein SQL-Client deiner Wahl, z. B.
 
    * [DBeaver (Open Source)](https://dbeaver.io/)
    * [Azure Data Studio](https://learn.microsoft.com/de-de/sql/azure-data-studio/)
