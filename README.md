@@ -45,7 +45,7 @@ Bevor du loslegst, stelle sicher, dass du folgendes installiert hast:
 git clone <-Link-zu-diesem-Repo->
 
 Nach erfolgtem Klonen noch in den Ordner wechseln:
-cd /Docker_Container_Northwind_SQL
+cd Docker_Container_Northwind_SQL/
 
 ### 2. Script ausführen um den Container zu erstellen (inkl. Datenbank)
 Für Windows (Powershell):
