@@ -1,0 +1,8 @@
+# Umgebungsvariablen
+.env
+
+# Logs
+*.log
+
+# Temporäre Dateien
+*.tmp
