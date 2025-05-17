@@ -42,19 +42,39 @@ Bevor du loslegst, stelle sicher, dass du folgendes installiert hast:
 
 Öffne ein Terminal (macOS/Linux) oder PowerShell (Windows) und führe aus:
 
-```bash
-git clone https://github.com/dein-user/northwind-docker-sqlserver.git
-cd northwind-docker-sqlserver
+git clone <-Link-zu-diesem-Repo->
 
-**### 2. Script ausführen um den Container zu erstellen (inkl. Datenbank)**
+### 2. Script ausführen um den Container zu erstellen (inkl. Datenbank)
 Für Windows (Powershell):
 .\start.ps1
 
-Für Linux:
+Für Linux (Admin-BErechtigung ggfs. notwendig!):
 chmod +x start.sh
 ./start.sh
 
-**### 3. Verbindung zur Datenbank**
+Oder eben als Admin:
+sudo chmod +x start.sh
+sudo ./start.sh
+
+### 3. Passwortanforderungen
+SQL erfordert ein "starkes" Passwort um initialisiert werden zu können.
+Der SA_PASSWORD muss:
+Mindestens 8 Zeichen lang sein
+Mindestens 1 Großbuchstaben
+Mindestens 1 Kleinbuchstaben
+Mindestens 1 Zahl
+Mindestens 1 Sonderzeichen enthalten
+Gültig wäre z.B.: StrongPass1!
+
+
+### 4. Container starten
+Zum Starten des Containers:
+docker compose up
+
+Zum Stoppen des Containers:
+docker compose down
+
+### 5. Verbindung zur Datenbank
 Du kannst dich mit einem SQL-Tool deiner Wahl verbinden, z. B. mit DBeaver oder Azure Data Studio:
 Datenbank-Typ: Microsoft SQL Server
 Host: localhost (Oder wenn WSL: IP-Adresse des WSL -> ifconfig)
