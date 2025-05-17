@@ -1,6 +1,6 @@
 # Docker\_Container\_Northwind\_SQL
 
-**Docker-Container für Übung 4.1** des Kurses *Datenbanken für Jurist\:innen* von Prof. Dr. Nahr an der Universität Passau.
+**Docker-Container für Übung 4.2** des Kurses *Datenbanken für Jurist\:innen* von Prof. Dr. Nahr an der Universität Passau.
 
 ---
 
