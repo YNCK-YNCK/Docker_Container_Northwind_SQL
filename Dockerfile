@@ -1,20 +1,29 @@
 FROM mcr.microsoft.com/mssql/server:2022-latest
 
-# EULA akzeptieren
+# Akzeptiere die Lizenzbedingungen
 ENV ACCEPT_EULA=Y
+# Der SA_PASSWORD wird beim Containerlaufzeit übergeben
+ARG SA_PASSWORD
 
-# Root-Rechte aktivieren (für Paketinstallation)
+# Root-Rechte aktivieren für Paketinstallation
 USER root
 
-# Sicherstellen, dass curl verfügbar ist
+# Hilfsprogramme installieren
 RUN apt-get update && \
     apt-get install -y curl && \
     rm -rf /var/lib/apt/lists/*
 
-# Zielverzeichnis sicherstellen
+# Erstelle Verzeichnisse
 RUN mkdir -p /var/opt/mssql/scripts
 
-# Northwind Initialisierungsskript herunterladen
+# Lade Northwind-Installationsskript herunter
 RUN curl -sSL \
     https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/databases/northwind-pubs/instnwnd.sql \
     -o /var/opt/mssql/scripts/instnwnd.sql
+
+# Kopiere Initialisierungsskript
+COPY entrypoint.sh /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+# Start-Befehl setzen
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
