@@ -59,12 +59,17 @@ sudo ./start.sh
 ### 3. Passwortanforderungen
 SQL erfordert ein "starkes" Passwort um initialisiert werden zu können.
 Der SA_PASSWORD muss:
+
 Mindestens 8 Zeichen lang sein
+
 Mindestens 1 Großbuchstaben
+
 Mindestens 1 Kleinbuchstaben
+
 Mindestens 1 Zahl
+
 Mindestens 1 Sonderzeichen enthalten
-Gültig wäre z.B.: StrongPass1!
+Gültig wäre z.B.: StrongP@ssw0rd
 
 
 ### 4. Container starten
