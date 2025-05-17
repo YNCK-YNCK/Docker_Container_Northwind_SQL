@@ -69,7 +69,8 @@ Gültig wäre z.B.: StrongPass1!
 
 ### 4. Container starten
 Zum Starten des Containers:
-docker compose up
+docker compose up -d
+# -d wird genutzt um den service zu detachen.
 
 Zum Stoppen des Containers:
 docker compose down
