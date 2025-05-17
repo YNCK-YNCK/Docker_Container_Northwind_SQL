@@ -1,99 +1,176 @@
-# Docker_Container_Northwind_SQL
-Docker container for Exercise 4.1 of the course databases for legal professionals by Prof. Dr. Nahr at University of Passau.
-# Northwind SQL Server – Docker Setup für Einsteiger:innen
+# Docker\_Container\_Northwind\_SQL
 
-Willkommen! Dieses Repository stellt dir eine einfache Möglichkeit zur Verfügung, um lokal einen Microsoft SQL Server 2022 mit der bekannten **Northwind-Datenbank** laufen zu lassen – ganz ohne komplizierte Installation oder Vorwissen.
+**Docker-Container für Übung 4.1** des Kurses *Datenbanken für Jurist\:innen* von Prof. Dr. Nahr an der Universität Passau.
 
-Du brauchst nur **Docker** – und schon kannst du SQL lernen, üben und ausprobieren!
+---
+
+##  Northwind SQL Server – Docker-Setup für Einsteiger\:innen
+
+Willkommen! Dieses Repository ermöglicht dir, **lokal** einen **Microsoft SQL Server 2022** mit der bekannten **Northwind-Datenbank** in Betrieb zu nehmen – ohne komplexe Installationen oder Vorkenntnisse.
+
+Mit **Docker** kannst du direkt SQL lernen, üben und erste Schritte in relationalen Datenbanken durchführen.
 
 ---
 
 ## Was ist die Northwind-Datenbank?
 
-Northwind ist eine Beispiel-Datenbank von Microsoft, die häufig in Schulungen verwendet wird. Sie enthält Daten über:
+Die **Northwind-Datenbank** ist eine von Microsoft bereitgestellte Beispieldatenbank, die in zahlreichen Tutorials und Schulungen verwendet wird. Sie enthält praxisnahe Geschäftsdaten zu:
 
-- Kunden (`Customers`)
-- Bestellungen (`Orders`)
-- Produkte (`Products`)
-- Mitarbeiter (`Employees`)
-- Lieferanten (`Suppliers`)
+* **Kunden** (`Customers`)
+* **Bestellungen** (`Orders`)
+* **Produkte** (`Products`)
+* **Mitarbeiter\:innen** (`Employees`)
+* **Lieferanten** (`Suppliers`)
 
-Perfekt für SQL-Übungen wie `JOIN`, `GROUP BY`, `ORDER BY`, `WHERE`, Aggregatfunktionen u. v. m.
+Ideal für Übungen zu `SELECT`, `JOIN`, `GROUP BY`, `ORDER BY`, `WHERE`, Aggregatfunktionen u. v. m.
 
 ---
 
 ## Voraussetzungen
 
-Bevor du loslegst, stelle sicher, dass du folgendes installiert hast:
+1. **Docker Desktop** (Windows/macOS)
+2. **Optional**: Ein SQL-Client deiner Wahl, z. B.
 
-1. **Docker Desktop**  
-   - [Download für Windows/macOS](https://www.docker.com/products/docker-desktop)
-
-2. **(Optional)**: Ein SQL-Client zum Verbinden mit der Datenbank, z. B.  
-   - [DBeaver (Open Source)](https://dbeaver.io/)
-   - [Azure Data Studio](https://learn.microsoft.com/de-de/sql/azure-data-studio/)
-   - [SQL Server Management Studio (SSMS)](https://learn.microsoft.com/de-de/sql/ssms/)
+   * [DBeaver (Open Source)](https://dbeaver.io/)
+   * [Azure Data Studio](https://learn.microsoft.com/de-de/sql/azure-data-studio/)
+   * [SQL Server Management Studio (SSMS)](https://learn.microsoft.com/de-de/sql/ssms/)
 
 ---
 
-**##  Schnellstart (Step-by-Step)**
+## Schnellstart
 
-**### 1. Repository herunterladen**
+### 1. Repository klonen
 
-Öffne ein Terminal (macOS/Linux) oder PowerShell (Windows) und führe aus:
-
-git clone <-Link-zu-diesem-Repo->
-
-Nach erfolgtem Klonen noch in den Ordner wechseln:
+```bash
+git clone https://github.com/YNCK-YNCK/Docker_Container_Northwind_SQL.git
 cd Docker_Container_Northwind_SQL/
+```
 
-### 2. Script ausführen um den Container zu erstellen (inkl. Datenbank)
-Für Windows (Powershell):
-.\start.ps1
+### 2. Container starten
 
-Für Linux (Admin-BErechtigung ggfs. notwendig!):
+#### Windows (PowerShell)
+
+```powershell
+.
+start.ps1
+```
+
+#### Linux/macOS
+
+```bash
 chmod +x start.sh
 ./start.sh
+```
 
-Oder eben als Admin:
+Bei Bedarf mit `sudo`:
+
+```bash
 sudo chmod +x start.sh
 sudo ./start.sh
+```
 
-### 3. Passwortanforderungen
-SQL erfordert ein "starkes" Passwort um initialisiert werden zu können.
-Der SA_PASSWORD muss:
+### 3. SA-Passwortanforderungen
 
-Mindestens 8 Zeichen lang sein
+Der `SA`-Account benötigt ein starkes Passwort:
 
-Mindestens 1 Großbuchstaben
+* Mindestens 8 Zeichen
+* Mindestens ein Groß- und ein Kleinbuchstabe
+* Mindestens eine Zahl
+* Mindestens ein Sonderzeichen
 
-Mindestens 1 Kleinbuchstaben
+**Beispiel:** `StrongP@ssw0rd!`
 
-Mindestens 1 Zahl
+---
 
-Mindestens 1 Sonderzeichen enthalten
-Gültig wäre z.B.: StrongP@ssw0rd
+## Verbindung zur Datenbank
 
+Verbinde deinen SQL-Client mit den folgenden Parametern:
 
-### 4. Container starten
-Zum Starten des Containers:
-docker compose up -d
-# -d wird genutzt um den service zu detachen.
+* **Host:** `localhost` (unter WSL ggf. IP aus `ifconfig`)
+* **Port:** `1433`
+* **Benutzer:** `SA`
+* **Kennwort:** (dein `SA`-Passwort)
 
-Zum Stoppen des Containers:
-docker compose down
+---
 
-### 5. Verbindung zur Datenbank
-Du kannst dich mit einem SQL-Tool deiner Wahl verbinden, z. B. mit DBeaver oder Azure Data Studio:
-Datenbank-Typ: Microsoft SQL Server
-Host: localhost (Oder wenn WSL: IP-Adresse des WSL -> ifconfig)
-Port: 1433
-Benutzer: SA
-Passwort: das Passwort, das du im Startskript angegeben hast
+## Northwind-Datenbank importieren
 
-northwind-docker-sqlserver/
-├── Dockerfile          # Erstellt das SQL Server-Image & lädt Northwind-Daten
-├── docker-compose.yml  # Startet den Container mit allen nötigen Parametern
-├── start.sh            # Startskript für Linux/macOS
-├── start.ps1           # Startskript für Windows
-├── .gitignore          # Ignoriert temporäre Dateien
+1. **Neue Datenbank erstellen**
+   Erstelle in deinem SQL-Client eine Datenbank mit dem Namen **`Northwind`**.
+
+2. **Setup-Skript von Microsoft kopieren**
+   Repository: [https://github.com/microsoft/sql-server-samples/blob/master/samples/databases/northwind-pubs/instnwnd.sql](https://github.com/microsoft/sql-server-samples/blob/master/samples/databases/northwind-pubs/instnwnd.sql)
+
+   * Öffne die **Raw-Ansicht** auf GitHub und kopiere das gesamte Skript.
+
+3. **Skript ausführen** *(Beispiel DBeaver)*
+
+   * Rechtsklick auf Datenbank **`Northwind`** → **SQL-Editor → Neues SQL-Skript**
+   * Skript einfügen
+   * **Hinweis:** Das Skript enthält `GO`-Anweisungen, die in DBeaver nicht als reguläre SQL-Befehle ausgeführt werden.
+
+   **Workaround:**
+
+   * Klicke in das Skriptfenster
+   * Führe mit **`ALT + X`** blockweise (bis zum nächsten `GO`) aus
+
+---
+
+## Installation prüfen
+
+### 1. Datenbanken auflisten
+
+```sql
+SELECT name FROM sys.databases;
+```
+
+> Erwartet: u.a. `Northwind`
+
+### 2. Tabellen anzeigen
+
+```sql
+USE Northwind;
+
+SELECT TABLE_NAME
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE';
+```
+
+> Erwartete Tabellen:
+
+```
+Employees
+Categories
+Customers
+Shippers
+Suppliers
+Orders
+Products
+Order Details
+CustomerCustomerDemo
+CustomerDemographics
+Region
+Territories
+EmployeeTerritories
+```
+
+### 3. Beispielabfrage
+
+```sql
+SELECT TOP 5 CompanyName, ContactName
+FROM Customers;
+```
+
+> Sollte einige Kundendatensätze zurückliefern.
+
+---
+
+##  Tipps & Tricks
+
+* **`GO`-Blöcke**: In DBeaver einzeln ausführen mit **`ALT + X`**
+* **Container zurücksetzen**: `docker compose down -v` löscht Volumes und Netzwerke
+* **Container Abschalten**: `docker compose down` Beendet den Container in Docker
+
+---
+
+Viel Erfolg beim Lernen mit SQL & der Northwind-Datenbank! 
