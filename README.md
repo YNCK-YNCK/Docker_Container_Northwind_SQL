@@ -1,12 +1,10 @@
 # Docker\_Container\_Northwind\_SQL
 
-**Docker-Container für Übung 4.2** des Kurses *Datenbanken für Jurist\:innen* von Prof. Dr. Nahr an der Universität Passau.
-
 ---
 
-##  Northwind SQL Server – Docker-Setup für Einsteiger\:innen
+##  Northwind SQL Server
 
-Willkommen! Dieses Repository ermöglicht dir, **lokal** einen **Microsoft SQL Server 2022** mit der bekannten **Northwind-Datenbank** in Betrieb zu nehmen – ohne komplexe Installationen oder Vorkenntnisse.
+Willkommen! Dieses Repository ermöglicht dir, **lokal** einen **Microsoft SQL Server 2022** für den Einsatz der **Northwind-Datenbank** in Betrieb zu nehmen – ohne komplexe Installationen oder Vorkenntnisse.
 
 Mit **Docker** kannst du direkt SQL lernen, üben und erste Schritte in relationalen Datenbanken durchführen.
 
