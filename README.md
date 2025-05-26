@@ -41,8 +41,8 @@ Ideal für Übungen zu `SELECT`, `JOIN`, `GROUP BY`, `ORDER BY`, `WHERE`, Aggreg
 ### 1. Repository klonen
 
 ```bash
-git clone https://github.com/YNCK-YNCK/Docker_Container_Northwind_SQL.git
-cd Docker_Container_Northwind_SQL/
+git clone https://github.com/YNCK-YNCK/Docker_Local_SQL_Server_2022.git
+cd Docker_Local_SQL_Server_2022/
 ```
 
 ### 2. Container starten
